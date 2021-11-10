@@ -16,7 +16,7 @@ class InstancesController < ApplicationController
 
   def create
     @instance = Instance.new(instance_params)
-    Instance.send_instance(instance_params)
+    @instance.send_instance
     @instance.save
   end
 
