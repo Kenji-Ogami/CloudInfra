@@ -7,8 +7,14 @@ class Instance < ApplicationRecord
         user = 'kenji'
 
         Net::SSH.start(ip_addr, user, option) do |ssh|
+            loc = format('/home/kenji/instances/%<x>s', x: name)
+            cmd = format('mkdir %<x>s', x: loc)
+            ssh.exec!(cmd)
             src = '/var/kvm/disk/kvm_centos8_bkup/disk.qcow2'
-            dist = '/home/kenji/'
+            dist = loc
+            ssh.scp.download! src, dist
+
+            src = '/var/kvm/disk/kvm_centos8_bkup/kvm_centos8_default.xml'
             ssh.scp.download! src, dist
         end
     end
