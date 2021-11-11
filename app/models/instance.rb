@@ -1,8 +1,9 @@
 class Instance < ApplicationRecord
-    def send_instance(name:, machine_id:, cpu:, memory:, disk_space:, key_id:)
+    def send_instance
+	debugger
         machine = Machine.find(machine_id)
-        option = {key: '/home/kenji/.ssh/key_local',
-                  poar : 22}
+        option = {keys: '/home/kenji/.ssh/key_local',
+                  port: 22}
         ip_addr = machine[:ip_addr]
         user = 'kenji'
 
