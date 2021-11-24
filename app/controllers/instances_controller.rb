@@ -8,7 +8,7 @@ class InstancesController < ApplicationController
 
   def show
     @instance = Instance.find(params[:id])
-    reender json: @instance
+    render json: @instance
   end
 
   def new
@@ -16,8 +16,11 @@ class InstancesController < ApplicationController
 
   def create
     @instance = Instance.new(instance_params)
-    @instance.send_instance
     @instance.save
+    ret = @instance.send_instance
+    key = File.read(ret[:priv_key])
+
+    render json: {ip_addr: ret[:ip_addr], priv_key: key} 
   end
 
   def update
