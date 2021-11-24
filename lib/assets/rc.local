@@ -1,0 +1,23 @@
+#
+# In contrast to previous versions due to parallel execution during boot
+# this script will NOT be run after all other services.
+#
+# Please note that you must run 'chmod +x /etc/rc.d/rc.local' to ensure
+# that this script will be executed during boot.
+
+touch /var/lock/subsys/local
+mkdir /metadata
+mount LABEL=METADATA /metadata
+source /metadata/config.sh
+nmcli general hostname $HN
+nmcli connection modify $CON ipv4.addresses $IP
+nmcli connection up $CON
+
+if [ ! -d ~/.ssh ]; then
+  mkdir ~/.ssh
+fi
+
+if [ ! -f ~/.ssh/authorized_keys ]; then
+  touch ~/.ssh/authorized_keys
+  cat /metadata/$KEY > ~/.ssh/authorized_keys
+fi
