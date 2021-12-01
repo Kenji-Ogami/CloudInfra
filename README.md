@@ -1,5 +1,5 @@
 # README
-実現した機能（2021/12/1版）
+# 1. 実現した機能（2021/12/1版）
 
 * インスタンスをSCPで子サーバーに配信
 * 空いているIPアドレスを探して取得する
@@ -13,4 +13,13 @@
 * VMをAPI経由でシャットダウン、削除する機能（併せてIPアドレスも解放）（2021/12/1追加機能）
 * 全てのインスタンスの状態を表示するダッシュボード機能（2021/12/1追加機能）
 
-
+# 2. 記述したソースコード
+* app/models/instances.rb                     : インスタンスの配信、セットアップ、削除、サーバー自動選択等の処理を記述
+* app/models/ip_addresses.rb                  : IPアドレスの管理を記述
+* app/controllers/instances_controllers.rb    : Web API、Dashboardの処理を記述
+* app/controllers/ip_addresses_controllers.rb : Web APIを記述
+* app/controllers/machines_controllers.rb     : Web APIを記述
+* app/views/instances/index.html.erb          : Dashboard画面のデザイン
+* app/assets/config/template.xml              : VMの定義ファイルのテンプレート
+* app/assets/config/templage.cfg              : VMがBootする際にsourceさせる設定ファイルのテンプレート
+* app/assets/config/rc.local                  : VM内に設置しているBoot Script
