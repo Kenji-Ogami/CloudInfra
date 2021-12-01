@@ -46,7 +46,8 @@ class Instance < ApplicationRecord
 	  cfg.gsub!('[ip_addr]', vm_ip_addr)
 	  cfg.gsub!('[connection]', connection)
 	  cfg.gsub!('[key_name]', key_name)
-	  File.open('/home/kenji/kvm_disk/config.sh', mode="w"){|f|
+      wfile=format('/home/kenji/kvm_disk/config_%<x>s.sh', x: name)
+	  File.open(wfile, mode="w"){|f|
 		f.write(cfg)
 	  }
 
@@ -66,8 +67,8 @@ class Instance < ApplicationRecord
 	  
 
 	  #Transfer config.sh
-	  src = '/home/kenji/kvm_disk/config.sh'
-      ssh.scp.upload! src, dist
+	  src = wfile
+      ssh.scp.upload! src, format('%<x>s/config.sh',x: dist)
 
 	  #Transfer key
 	  src = format('%<x>s.pub', x: key_loc)
