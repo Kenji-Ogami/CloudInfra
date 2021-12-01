@@ -4,7 +4,6 @@ class InstancesController < ApplicationController
   def index
     @instances = Instance.all
     @ip_addresses = IpAddress.all
-    #render json: @instances
   end
 
   def show
@@ -20,13 +19,9 @@ class InstancesController < ApplicationController
 
     @instance = Instance.new(instance_params)
     @instance.save
-    threads = []
-    #ret = @instance.send_instance
     th = Thread.new do |thr| 
-      ret =@instance.send_instance
-      #key = File.read(ret[:priv_key])
+      @instance.send_instance
     end
-    #render json: {name: ret[:name], machine_id: ret[:machine_id], ip_addr: ret[:ip_addr], priv_key: key}
     render json: {status: 'Success'}
   end
 
