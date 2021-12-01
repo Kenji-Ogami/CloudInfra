@@ -22,4 +22,4 @@
 * app/views/instances/index.html.erb          : Dashboard画面のデザイン
 * app/assets/config/template.xml              : VMの定義ファイルのテンプレート
 * app/assets/config/templage.cfg              : VMがBootする際にsourceさせる設定ファイルのテンプレート
-* app/assets/config/rc.local                  : VM内に設定しているBoot Script
+* app/assets/config/rc.local                  : VM内に設置しているBoot Script
