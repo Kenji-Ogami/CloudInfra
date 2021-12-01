@@ -1,24 +1,16 @@
 # README
+実現した機能（2021/12/1版）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* インスタンスをSCPで子サーバーに配信
+* 空いているIPアドレスを探して取得する
+* VMの設定とSSHの鍵を子サーバー内の各VM用ディレクトリに配信
+* VM起動時、BootスクリプトでVM用領域に用意したマウントポイントをマウントし、設定と鍵を取得
+* Web APIで起動したVMのIPアドレスとSSH用の鍵を配信
+* 配信された鍵でVMにローカルからSSHでアクセス
+* 余裕のあるサーバーをインスタンスに自動でアロケーションする（2021/12/1追加機能）
+* 余裕のあるサーバーを選択する為、コミット率というパラメータを導入
+* VMのディスクイメージ転送、セットアップのタスクをスレッド化（2021/12/1追加機能）
+* VMをAPI経由でシャットダウン、削除する機能（併せてIPアドレスも解放）（2021/12/1追加機能）
+* 全てのインスタンスの状態を表示するダッシュボード機能（2021/12/1追加機能）
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
