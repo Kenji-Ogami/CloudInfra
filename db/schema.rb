@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_152316) do
+ActiveRecord::Schema.define(version: 2021_11_30_161725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 2021_11_09_152316) do
     t.integer "disk_space"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.string "string"
+    t.string "key"
+    t.string "text"
   end
 
   create_table "ip_addresses", force: :cascade do |t|

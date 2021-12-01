@@ -1,0 +1,45 @@
+<main>
+  <table border=1 width=100%>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Machine ID</th>
+      <th>CPU</th>
+      <th>Memory[GB]</th>
+      <th>Disk Space[GB]</th>
+      <th>IP Address</th>
+      <th>Status</th>
+      <th>Key</th>
+    </tr>
+    <% @instances.each do |inst| %>
+    <tr>
+      <th>
+        <%= format('%s',inst[:id]) %>
+      </th>
+      <th>
+        <%= format('%s',inst[:name]) %>
+      </th>
+      <th>
+        <%= format('%s',inst[:machine_id]) %>
+      </th>
+      <th>
+        <%= format('%s',inst[:cpu]) %>
+      </th>
+      <th>
+        <%= format('%s',inst[:memory]) %>
+      </th>
+      <th>
+        <%= format('%s',inst[:disk_space]) %>
+      </th>
+      <th>
+        <%= format('%s',@ip_addresses.find_by(instance_id: inst[:id])[:ip_addr]) %>
+      </th>
+      <th>
+        <%= format('%s',inst[:status]) %>
+      </th>
+      <th>
+        <%= format('%s',inst[:key]) %>
+      </th>
+    </tr> 
+    <% end %>
+</main>

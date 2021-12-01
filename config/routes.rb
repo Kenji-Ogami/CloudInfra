@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'instances#index'
   get 'ip_addresses/new'
   get 'instances/new'
   get 'machines/new'
